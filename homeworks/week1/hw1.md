@@ -15,7 +15,7 @@
 **交作業**
 接著就可以把檔案推送到遠端了。
 先設定好遠端推送的位置：`git remote add origin https://github.com/Lidemy/mentor-program-4th-ai86109.git`
-Local 端的檔案推送至遠端：`git push -u origin master`
+Local 端的檔案推送至遠端：`git push -u origin week1`
 發 PR（將分支 merge 到 master）：
 1. 到 GitHub
 2. Pull request 分頁
