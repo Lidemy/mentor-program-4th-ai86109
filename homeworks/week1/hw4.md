@@ -40,7 +40,7 @@ stage 已加入
 `git add .`
 
 移出
-`git rm — cached test.js`
+`git rm --cached test.js`
 
 經過以上這樣移進來移出去之後，我們也確定好要加入版本控制的檔案了，準備好就可以開始建立我們第一版的版本控制
 `git commit -m “跟這個版本有關的敘述”`
@@ -62,7 +62,7 @@ commit 完之後，`git status` 會看到狀態和剛剛不一樣，原本等待
 ## 加入黑名單
 如果我有不想放入版本控制的的檔案，但每次都要手動排除，實在是很麻煩，有沒有辦法把他們都集中管理，有！你可以使用 .gitignore
 
-`touch .gitignore` 建立一個 .gitignore 資料夾
+`touch .gitignore` 建立一個叫 .gitignore 的純文字檔案
 接著用 vim 進到裡面，`vim .gitignore`
 將想要忽略的檔名寫入
 
