@@ -1,23 +1,24 @@
-var readline = require('readline');
-var rl = readline.createInterface({
-    input: process.stdin
-})
+/* eslint-disable import/newline-after-import, no-unused-expressions */
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+});
 
-var lines = []
+const lines = [];
 
-rl.on('line', function(line){
-    lines.push(line)
-})
+rl.on('line', (line) => {
+  lines.push(line);
+});
 
-rl.on('close', function(){
-    solve(lines)
-})
-
-function solve(lines){
-    let str = lines[0]
-    let reverseStr = ''
-    for(let i=str.length-1; i>=0; i--){
-        reverseStr += str[i]
-    }
-    str === reverseStr ? console.log('True') : console.log('False')
+function solve(input) {
+  const str = input[0];
+  let reverseStr = '';
+  for (let i = str.length - 1; i >= 0; i -= 1) {
+    reverseStr += str[i];
+  }
+  str === reverseStr ? console.log('True') : console.log('False');
 }
+
+rl.on('close', () => {
+  solve(lines);
+});

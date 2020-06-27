@@ -1,31 +1,32 @@
-var readline = require('readline');
-var rl = readline.createInterface({
-    input: process.stdin
-})
+/* eslint-disable import/newline-after-import, no-restricted-properties */
+const readline = require('readline');
+const rl = readline.createInterface({
+  input: process.stdin,
+});
 
-var lines = []
+const lines = [];
 
-rl.on('line', function(line){
-    lines.push(line)
-})
+rl.on('line', (line) => {
+  lines.push(line);
+});
 
-rl.on('close', function(){
-    solve(lines)
-})
-
-function solve(lines){
-    let arr = lines[0].split(' ')
-    const N = Number(arr[0])
-    const M = Number(arr[1])
-    for(let i=N; i<=M; i++){
-        let str = i.toString()
-        let digits = str.length
-        let result = 0
-        for(let j=0; j<digits; j++){
-            result += Math.pow(Number(str[j]), digits)
-        }
-        if(result === i){
-            console.log(i)
-        }
+function solve(input) {
+  const arr = input[0].split(' ');
+  const N = Number(arr[0]);
+  const M = Number(arr[1]);
+  for (let i = N; i <= M; i += 1) {
+    const str = i.toString();
+    const digits = str.length;
+    let result = 0;
+    for (let j = 0; j < digits; j += 1) {
+      result += Math.pow(Number(str[j]), digits);
     }
+    if (result === i) {
+      console.log(i);
+    }
+  }
 }
+
+rl.on('close', () => {
+  solve(lines);
+});
