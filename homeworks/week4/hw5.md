@@ -22,7 +22,6 @@
 ## 假設你現在是個餐廳平台，需要提供 API 給別人串接並提供基本的 CRUD 功能，包括：回傳所有餐廳資料、回傳單一餐廳資料、刪除餐廳、新增餐廳、更改餐廳，你的 API 會長什麼樣子？請提供一份 API 文件。
 
 **Base URL: https://iamfoodie.com**
-
 | 說明 | Method | Path | Parameters | Example |
 | ---- | ---- | ---- | ---- | ---- |
 | 回傳所有餐廳資料 | GET | /restaurants | _limit:最大回傳資料數量，Default:20，Maximum:1000 | /restaurants?_limit=10 |
