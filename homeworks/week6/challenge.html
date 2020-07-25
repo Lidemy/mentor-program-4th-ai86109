@@ -10,156 +10,218 @@
   <link rel="stylesheet" href="css/styles.css?v=1.0">
   <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
   <style>
+    .wrapper {
+      max-width: 1210px;
+      margin: 10px 115px 0px 115px;
+    }
+
+    nav {
+      background: #ff6600;
+      display: flex;
+      position: relative;
+    }
+
+    .nav__logo {
+      width: 20px;
+      height: 18px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      border: solid 1px white;
+      margin: 2px 4px 2px 2px;
+    }
+
+    .nav__titleAndList {
+      display: flex;
+    }
+
+    h1 {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0;
+      line-height: 24px;
+    }
+
+    .nav__list {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding-left: 5px;
+    }
+
+    .nav__list li a {
+      text-decoration: none;
+      color: black;
+      line-height: 24px;
+      padding-left: 5px;
+    }
+
+    .nav__list-divider::after, .news__timestamp::after, .news__hide::after {
+      content: '|';
+      padding-left: 5px;
+
+    }
+
+    .nav__login {
+      position: absolute;
+      right: 0;
+      line-height: 24px;
+    }
+
+    .nav__login a {
+      text-decoration: none;
+      color: black;
+      padding-right: 5px;
+    }
+
+    main, footer {
+      background-color: rgb(246, 246, 239);
+      padding: 5px;
+    }
+
+    .news__block {
+      margin-bottom: 4px;
+    }
+
+    .news__rank, .news__title {
+      font-size: 14px;
+    }
+
+    .news__sitebit, .news__bottom span {
+      font-size: 12px;
+    }
+
+    .news__rank, .news__sitebit, .news__bottom {
+      color: #828282;
+    }
+
+    .news__rank {
+      text-align: end;
+      padding: 0 0 0 10px;
+    }
+
+    .news__rank::after {
+      content: '.';
+    }
+
+    .news__up {
+      width: 0;
+      height: 0;
+      border-top: solid 8px transparent;
+      border-left: solid 6px transparent;
+      border-right: solid 6px transparent;
+      border-bottom: solid 8px #828282;
+      display: inline-block;
+    }
+
+    .news__sitebit::before {
+      content: '(';
+    }
+
+    .news__sitebit::after {
+      content: ')';
+    }
+    
+    .news__bottom {
+      margin-left: 44px;
+      font-size: 15px;
+    }
+
+    .news__points::after {
+      content: ' points by';
+    }
+
+    .news__more {
+      margin: 10px 0 5px 44px;
+      font-size: 15px;
+    }
+
+    .footer__divider {
+      border-top: solid 2px #ff6600;
+    }
+
+    .footer__list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+
+    .footer__list a {
+      text-decoration: none;
+      color: black;
+      font-size: 12px;
+      padding-left: 5px;
+    }
+
+    .footer__search {
+      color: #828282;
+      font-size: 15px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .footer__search input {
+      margin-left: 5px;
+    }
+
+    @media(max-width: 890px) {
       .wrapper {
-        width: 1210px;
-        margin: 10px auto 0px auto;
+        width: 100%;
+        margin: 0;
       }
 
-      nav {
-        background: #ff6600;
-        display: flex;
-        position: relative;
+      .nav__titleAndList {
+        display: block;
+        margin: 5px 5px 5px 0;
       }
 
       .nav__logo {
-        width: 20px;
-        height: 18px;
-        color: white;
-        font-size: 16px;
-        font-weight: bold;
-        text-align: center;
-        border: solid 1px white;
-        margin: 2px 4px 2px 2px;
+        margin: 9px 3px;
       }
 
       h1 {
-        font-size: 16px;
-        font-weight: bold;
-        margin: 0;
-        line-height: 24px;
+        padding-left: 5px;
+        line-height: 10px;
       }
 
       .nav__list {
-        list-style: none;
-        display: flex;
-        margin: 0;
-        padding-left: 5px;
+        padding-left: 0;
       }
 
       .nav__list li a {
-        text-decoration: none;
-        color: black;
-        line-height: 24px;
         padding-left: 5px;
+        font-size: 12px;
+        line-height: 10px;
       }
 
-      .nav__list-divider::after, .news__timestamp::after, .news__hide::after {
-        content: '|';
-        padding-left: 5px;
-
+      .nav__list-divider::after {
+        font-size: 12px;
       }
 
       .nav__login {
-        position: absolute;
-        right: 0;
-        line-height: 24px;
+        line-height: 38px;
       }
 
       .nav__login a {
-        text-decoration: none;
-        color: black;
-        padding-right: 5px;
-      }
-
-      main, footer {
-        background-color: rgb(246, 246, 239);
-        padding: 5px;
-      }
-
-      .news__block {
-        margin-bottom: 4px;
-      }
-
-      .news__rank, .news__title {
-        font-size: 14px;
-      }
-
-      .news__sitebit, .news__bottom span {
         font-size: 12px;
-      }
-
-      .news__rank, .news__sitebit, .news__bottom {
-        color: #828282;
-      }
-
-      .news__rank {
-        text-align: end;
-        padding: 0 0 0 10px;
-      }
-
-      .news__rank::after {
-        content: '.';
-      }
-
-      .news__up {
-        width: 0;
-        height: 0;
-        border-top: solid 8px transparent;
-        border-left: solid 6px transparent;
-        border-right: solid 6px transparent;
-        border-bottom: solid 8px #828282;
-        display: inline-block;
-      }
-
-      .news__sitebit::before {
-        content: '(';
-      }
-
-      .news__sitebit::after {
-        content: ')';
-      }
-      
-      .news__bottom {
-        margin-left: 44px;
-        font-size: 15px;
-      }
-
-      .news__points::after {
-        content: ' points by';
-      }
-
-      .news__more {
-        margin: 10px 0 5px 44px;
-        font-size: 15px;
-      }
-
-      .footer__divider {
-        border-top: solid 2px #ff6600;
+        padding-right: 10px;
       }
 
       .footer__list {
-        list-style: none;
-        display: flex;
-        justify-content: center;
-      }
-
-      .footer__list a {
-        text-decoration: none;
-        color: black;
-        font-size: 12px;
-        padding-left: 5px;
+        flex-wrap: wrap;
+        align-content: center;
       }
 
       .footer__search {
-        color: #828282;
-        font-size: 15px;
-        text-align: center;
         margin-bottom: 10px;
       }
 
       .footer__search input {
         margin-left: 5px;
+        width: 80%;
       }
+    }
   </style>
 </head>
 
@@ -167,16 +229,18 @@
   <div class="wrapper">
     <nav>
       <div class="nav__logo">Y</div>
-      <h1>Hacker News</h1>
-      <ul class="nav__list">
-        <li class="nav__list-divider"><a href="#">new</a></li>
-        <li class="nav__list-divider"><a href="#">past</a></li>
-        <li class="nav__list-divider"><a href="#">comments</a></li>
-        <li class="nav__list-divider"><a href="#">ask</a></li>
-        <li class="nav__list-divider"><a href="#">show</a></li>
-        <li class="nav__list-divider"><a href="#">jobs</a></li>
-        <li><a href="#">submit</a></li>
-      </ul>
+      <div class="nav__titleAndList">
+        <h1>Hacker News</h1>
+        <ul class="nav__list">
+          <li class="nav__list-divider"><a href="#">new</a></li>
+          <li class="nav__list-divider"><a href="#">past</a></li>
+          <li class="nav__list-divider"><a href="#">comments</a></li>
+          <li class="nav__list-divider"><a href="#">ask</a></li>
+          <li class="nav__list-divider"><a href="#">show</a></li>
+          <li class="nav__list-divider"><a href="#">jobs</a></li>
+          <li><a href="#">submit</a></li>
+        </ul>
+      </div>
       <div class="nav__login">
         <a href="#">login</a>
       </div>
