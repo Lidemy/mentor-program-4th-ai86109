@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Hacker News</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/styles.css?v=1.0">
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
+  <style>
+    .wrapper {
+      max-width: 1210px;
+      margin: 10px 115px 0px 115px;
+    }
+
+    nav {
+      background: #ff6600;
+      display: flex;
+      position: relative;
+    }
+
+    .nav__logo {
+      width: 20px;
+      height: 18px;
+      color: white;
+      font-size: 16px;
+      font-weight: bold;
+      text-align: center;
+      border: solid 1px white;
+      margin: 2px 4px 2px 2px;
+    }
+
+    .nav__titleAndList {
+      display: flex;
+    }
+
+    h1 {
+      font-size: 16px;
+      font-weight: bold;
+      margin: 0;
+      line-height: 24px;
+    }
+
+    .nav__list {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding-left: 5px;
+    }
+
+    .nav__list li a {
+      text-decoration: none;
+      color: black;
+      line-height: 24px;
+      padding-left: 5px;
+    }
+
+    .nav__list-divider::after, .news__timestamp::after, .news__hide::after {
+      content: '|';
+      padding-left: 5px;
+
+    }
+
+    .nav__login {
+      position: absolute;
+      right: 0;
+      line-height: 24px;
+    }
+
+    .nav__login a {
+      text-decoration: none;
+      color: black;
+      padding-right: 5px;
+    }
+
+    main, footer {
+      background-color: rgb(246, 246, 239);
+      padding: 5px;
+    }
+
+    .news__block {
+      margin-bottom: 4px;
+    }
+
+    .news__rank, .news__title {
+      font-size: 14px;
+    }
+
+    .news__sitebit, .news__bottom span {
+      font-size: 12px;
+    }
+
+    .news__rank, .news__sitebit, .news__bottom {
+      color: #828282;
+    }
+
+    .news__rank {
+      text-align: end;
+      padding: 0 0 0 10px;
+    }
+
+    .news__rank::after {
+      content: '.';
+    }
+
+    .news__up {
+      width: 0;
+      height: 0;
+      border-top: solid 8px transparent;
+      border-left: solid 6px transparent;
+      border-right: solid 6px transparent;
+      border-bottom: solid 8px #828282;
+      display: inline-block;
+    }
+
+    .news__sitebit::before {
+      content: '(';
+    }
+
+    .news__sitebit::after {
+      content: ')';
+    }
+    
+    .news__bottom {
+      margin-left: 44px;
+      font-size: 15px;
+    }
+
+    .news__points::after {
+      content: ' points by';
+    }
+
+    .news__more {
+      margin: 10px 0 5px 44px;
+      font-size: 15px;
+    }
+
+    .footer__divider {
+      border-top: solid 2px #ff6600;
+    }
+
+    .footer__list {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+    }
+
+    .footer__list a {
+      text-decoration: none;
+      color: black;
+      font-size: 12px;
+      padding-left: 5px;
+    }
+
+    .footer__search {
+      color: #828282;
+      font-size: 15px;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .footer__search input {
+      margin-left: 5px;
+    }
+
+    @media(max-width: 890px) {
+      .wrapper {
+        width: 100%;
+        margin: 0;
+      }
+
+      .nav__titleAndList {
+        display: block;
+        margin: 5px 5px 5px 0;
+      }
+
+      .nav__logo {
+        margin: 9px 3px;
+      }
+
+      h1 {
+        padding-left: 5px;
+        line-height: 10px;
+      }
+
+      .nav__list {
+        padding-left: 0;
+      }
+
+      .nav__list li a {
+        padding-left: 5px;
+        font-size: 12px;
+        line-height: 10px;
+      }
+
+      .nav__list-divider::after {
+        font-size: 12px;
+      }
+
+      .nav__login {
+        line-height: 38px;
+      }
+
+      .nav__login a {
+        font-size: 12px;
+        padding-right: 10px;
+      }
+
+      .footer__list {
+        flex-wrap: wrap;
+        align-content: center;
+      }
+
+      .footer__search {
+        margin-bottom: 10px;
+      }
+
+      .footer__search input {
+        margin-left: 5px;
+        width: 80%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <nav>
+      <div class="nav__logo">Y</div>
+      <div class="nav__titleAndList">
+        <h1>Hacker News</h1>
+        <ul class="nav__list">
+          <li class="nav__list-divider"><a href="#">new</a></li>
+          <li class="nav__list-divider"><a href="#">past</a></li>
+          <li class="nav__list-divider"><a href="#">comments</a></li>
+          <li class="nav__list-divider"><a href="#">ask</a></li>
+          <li class="nav__list-divider"><a href="#">show</a></li>
+          <li class="nav__list-divider"><a href="#">jobs</a></li>
+          <li><a href="#">submit</a></li>
+        </ul>
+      </div>
+      <div class="nav__login">
+        <a href="#">login</a>
+      </div>
+    </nav>
+    <main>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">1</span>
+          <div class="news__up"></div>
+          <span class="news__title">Show HN: TinyPilot – Build a KVM over IP for Under $100 Using a Raspberry Pi</span>
+          <span class="news__sitebit">mtlynch.io</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">174</span>
+          <span class="news__author">mtlynch</span>
+          <span class="news__timestamp">2 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">90 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">2</span>
+          <div class="news__up"></div>
+          <span class="news__title">Cognitect Joins Nubank</span>
+          <span class="news__sitebit">cognitect.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">	351</span>
+          <span class="news__author">zrkrlc</span>
+          <span class="news__timestamp">4 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">104 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">3</span>
+          <div class="news__up"></div>
+          <span class="news__title">It's Time to Start Writing (2019)</span>
+          <span class="news__sitebit">alexnixon.github.io</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">	63</span>
+          <span class="news__author">dhotson</span>
+          <span class="news__timestamp">2 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">7 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">4</span>
+          <div class="news__up"></div>
+          <span class="news__title">The Billionaire Behind Efforts to Kill the U.S. Postal Service [pdf]</span>
+          <span class="news__sitebit">inthepublicinterest.org</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">292</span>
+          <span class="news__author">Firebrand</span>
+          <span class="news__timestamp">2 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">317 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">5</span>
+          <div class="news__up"></div>
+          <span class="news__title">India, Jio, and the Four Internets</span>
+          <span class="news__sitebit">stratechery.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">271</span>
+          <span class="news__author">MindGods</span>
+          <span class="news__timestamp">8 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">157 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">6</span>
+          <div class="news__up"></div>
+          <span class="news__title">Twitter bans 7k QAnon accounts, limits 150k others as part of broad crackdown</span>
+          <span class="news__sitebit">yahoo.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">47</span>
+          <span class="news__author">MBCook</span>
+          <span class="news__timestamp">29 minutes ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">9 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">7</span>
+          <div class="news__up"></div>
+          <span class="news__title">Show HN: Datagridxl.js – No-nonsense fast Excel-like data table library</span>
+          <span class="news__sitebit">datagridxl.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">73</span>
+          <span class="news__author">robbiejs</span>
+          <span class="news__timestamp">5 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">18 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">8</span>
+          <div class="news__up"></div>
+          <span class="news__title">Turing and Wittgenstein on Logic and Mathematics [pdf]</span>
+          <span class="news__sitebit">britishwittgensteinsociety.org</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">46</span>
+          <span class="news__author">tosh</span>
+          <span class="news__timestamp">4 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">14 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">9</span>
+          <div class="news__up"></div>
+          <span class="news__title">LinkedIn to cut 960 jobs worldwide</span>
+          <span class="news__sitebit">bbc.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">305</span>
+          <span class="news__author"></span>
+          <span class="news__timestamp">12 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">242 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">10</span>
+          <div class="news__up"></div>
+          <span class="news__title">Old-School Disk Partitions</span>
+          <span class="news__sitebit">bsdimp.blogspot.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">11</span>
+          <span class="news__author">zdw</span>
+          <span class="news__timestamp">2 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">2 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">11</span>
+          <div class="news__up"></div>
+          <span class="news__title">Big Sur is both 10.16 and 11.0</span>
+          <span class="news__sitebit">eclecticlight.co</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">164</span>
+          <span class="news__author">miles</span>
+          <span class="news__timestamp">5 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">127 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">12</span>
+          <div class="news__up"></div>
+          <span class="news__title">Monitoring your own infrastructure using Grafana, InfluxDB, and CollectD</span>
+          <span class="news__sitebit">serhack.me</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">325</span>
+          <span class="news__author">crecker</span>
+          <span class="news__timestamp">12 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">246 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">13</span>
+          <div class="news__up"></div>
+          <span class="news__title">The Cadence: How to Operate a SaaS Startup</span>
+          <span class="news__sitebit">medium.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">31</span>
+          <span class="news__author">yarapavan</span>
+          <span class="news__timestamp">3 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">discuss</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">14</span>
+          <div class="news__up"></div>
+          <span class="news__title">Safely Reviving Shared Memory</span>
+          <span class="news__sitebit">hacks.mozilla.org</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">136</span>
+          <span class="news__author">MindGods</span>
+          <span class="news__timestamp">8 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">57 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">15</span>
+          <div class="news__up"></div>
+          <span class="news__title">Harvard CS professor David Malan built a distance-learning empire</span>
+          <span class="news__sitebit">newyorker.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">311</span>
+          <span class="news__author">alienreborn</span>
+          <span class="news__timestamp">13 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">117 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">16</span>
+          <div class="news__up"></div>
+          <span class="news__title">Elo sucks – better multiplayer rating systems for smaller games (2019)</span>
+          <span class="news__sitebit">medium.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">71</span>
+          <span class="news__author">brownbat</span>
+          <span class="news__timestamp">7 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">59 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">17</span>
+          <div class="news__up"></div>
+          <span class="news__title">RIP ROP: CET Internals in Windows 20H1</span>
+          <span class="news__sitebit">windows-internals.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">50</span>
+          <span class="news__author">aw1621107</span>
+          <span class="news__timestamp">6 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">21 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">18</span>
+          <div class="news__up"></div>
+          <span class="news__title">Svelte and TypeScript</span>
+          <span class="news__sitebit">svelte.dev</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">185</span>
+          <span class="news__author">kevinak</span>
+          <span class="news__timestamp">9 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">47 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">19</span>
+          <div class="news__up"></div>
+          <span class="news__title">The Birth of New Spain</span>
+          <span class="news__sitebit">laphamsquarterly.org</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">37</span>
+          <span class="news__author">Thevet</span>
+          <span class="news__timestamp">6 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">17 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">20</span>
+          <div class="news__up"></div>
+          <span class="news__title">Life without line numbers for 6% smaller Go binaries</span>
+          <span class="news__sitebit">commaok.xyz</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">56</span>
+          <span class="news__author">caust1c</span>
+          <span class="news__timestamp">6 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">60 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">21</span>
+          <div class="news__up"></div>
+          <span class="news__title">Open-Source Music Production Tools</span>
+          <span class="news__sitebit">midination.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">135</span>
+          <span class="news__author">puranjay</span>
+          <span class="news__timestamp">6 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">32 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">22</span>
+          <div class="news__up"></div>
+          <span class="news__title">FounderPool: A community for founders to share risk and diversify their equity</span>
+          <span class="news__sitebit">founderpools.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">104</span>
+          <span class="news__author">manojdv</span>
+          <span class="news__timestamp">9 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">136 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">23</span>
+          <div class="news__up"></div>
+          <span class="news__title">AI in physics: are we facing a scientific revolution?</span>
+          <span class="news__sitebit">4alltech.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">168</span>
+          <span class="news__author">ezrakewa</span>
+          <span class="news__timestamp">13 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">113 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">24</span>
+          <div class="news__up"></div>
+          <span class="news__title">One of the earliest science fiction books was written by a 1660s duchess (2016)</span>
+          <span class="news__sitebit">atlasobscura.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">67</span>
+          <span class="news__author">Hooke</span>
+          <span class="news__timestamp">8 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">11 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">25</span>
+          <div class="news__up"></div>
+          <span class="news__title">The Venus of Laussel – La Femme à La Corne</span>
+          <span class="news__sitebit">donsmaps.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">16</span>
+          <span class="news__author">apollinaire</span>
+          <span class="news__timestamp">4 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">discuss</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">26</span>
+          <div class="news__up"></div>
+          <span class="news__title">Bidi Brackets for Dummies</span>
+          <span class="news__sitebit">unicode.org</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">14</span>
+          <span class="news__author">bkudria</span>
+          <span class="news__timestamp">4 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">13 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">27</span>
+          <div class="news__up"></div>
+          <span class="news__title">Eric Schmidt is working to launch a university</span>
+          <span class="news__sitebit">businessinsider.com</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">164</span>
+          <span class="news__author">plumeria</span>
+          <span class="news__timestamp">6 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">192 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">28</span>
+          <div class="news__up"></div>
+          <span class="news__title">NeurIPS 2020 “English to Bash” Competition Goes Live</span>
+          <span class="news__sitebit">mybluemix.net</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">76</span>
+          <span class="news__author">ArtWomb</span>
+          <span class="news__timestamp">11 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">16 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">29</span>
+          <div class="news__up"></div>
+          <span class="news__title">Launch HN: Charityvest (YC S20) – Employee charitable funds and gift matching</span>
+          <span class="news__sitebit"></span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">55</span>
+          <span class="news__author">Leonidas243</span>
+          <span class="news__timestamp">8 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">42 comments</span>
+        </div>
+      </div>
+      <div class="news__block">
+        <div class="news__top">
+          <span class="news__rank">30</span>
+          <div class="news__up"></div>
+          <span class="news__title">Invert, always, invert</span>
+          <span class="news__sitebit">anup.io</span>
+        </div>
+        <div class="news__bottom">
+          <span class="news__points">543</span>
+          <span class="news__author">anupj</span>
+          <span class="news__timestamp">16 hours ago</span>
+          <span class="news__hide">hide</span>
+          <span class="news__comments">147 comments</span>
+        </div>
+      </div>
+      <div class="news__more">
+        More
+      </div>
+    </main>
+    <footer>
+      <div class="footer__divider"></div>
+      <ul class="footer__list">
+        <li class="nav__list-divider"><a href="#">Guidelines</a></li>
+        <li class="nav__list-divider"><a href="#">FAQ</a></li>
+        <li class="nav__list-divider"><a href="#">Support</a></li>
+        <li class="nav__list-divider"><a href="#">API</a></li>
+        <li class="nav__list-divider"><a href="#">Security</a></li>
+        <li class="nav__list-divider"><a href="#">Lists</a></li>
+        <li class="nav__list-divider"><a href="#">Bookmarklet</a></li>
+        <li class="nav__list-divider"><a href="#">Legal</a></li>
+        <li class="nav__list-divider"><a href="#">Apply to YC</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+      <div class="footer__search">
+        <form>
+          Search:<input type="search" />
+        </form>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
