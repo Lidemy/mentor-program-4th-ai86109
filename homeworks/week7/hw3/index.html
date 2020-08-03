@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+
+  <title>Todolist</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="https://necolas.github.io/normalize.css/8.0.1/normalize.css" />
+  <style>
+    .formBox {
+        background: rgb(248, 150, 150);
+        max-width: 760px;
+        margin: 20px auto;
+        padding: 25px;
+        border-radius: 4px;
+    }
+
+    header {
+        font-size: 48px;
+        font-weight: bold;
+        text-align: center;
+        padding: 20px 0 25px 0;
+    }
+
+    .addList {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 30px;
+    }
+
+    .addList input {
+        width: 100%;
+        cursor: text;
+        background: white;
+        border: solid 1px rgb(77, 179, 77);
+        border-right: none;
+        padding: 8px;
+        font-size: 20px;
+        border-radius: 4px;
+    }
+
+    .addList__btn {
+        width: 160px;
+        font-size: 14px;
+        color: white;
+        background: rgb(77, 179, 77);
+        font-weight: bold;
+        border: solid 1px rgb(77, 179, 77);
+        border-left: none;
+        border-radius: 4px;
+    }
+
+    .list__block {
+        display: flex;
+        margin-bottom: 30px;
+    }
+
+    .list__button {
+        width: 25px;
+        height: 25px;
+        background-color: rgb(248, 150, 150);
+        border: solid 1px rgb(77, 179, 77);
+    }
+
+    .list__content {
+        flex: 1;
+        padding: 0 10px;
+        line-height: 25px;
+        font-size: 20px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .list__content:hover {
+        background: rgb(172, 102, 102);
+    }
+
+    .checked {
+        text-decoration: line-through;
+        color: rgb(199, 198, 198);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="formBox">
+    <header>
+        My Todolist
+    </header>
+    <section class="addList">
+        <input type="text" class="addList__input" placeholder="New Task..." />
+        <button class="addList__btn">+ Add New Task</button>
+    </section>
+    <main class="list">
+        <div class="list__block">
+            <input type="checkbox" class="list__button" />
+            <div class="list__content">
+                Feed the dog
+            </div>
+            <button class="list__delete">Delete</button>
+        </div>
+        <div class="list__block">
+            <input type="checkbox" class="list__button" />
+            <div class="list__content">
+                Learn JavaScript
+            </div>
+            <button class="list__delete">Delete</button>
+        </div>
+    </main>
+  </div>
+  <script src="./index.js"></script>
+</body>
+</html>
