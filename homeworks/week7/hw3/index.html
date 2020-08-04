@@ -57,6 +57,11 @@
         margin-bottom: 30px;
     }
 
+    label {
+        flex: 1;
+        display: flex;
+    } 
+
     .list__button {
         width: 25px;
         height: 25px;
@@ -96,17 +101,21 @@
     </section>
     <main class="list">
         <div class="list__block">
-            <input type="checkbox" class="list__button" />
-            <div class="list__content">
-                Feed the dog
-            </div>
+            <label>
+                <input type="checkbox" class="list__button" />
+                <div class="list__content">
+                    Feed the dog
+                </div>
+            </label>
             <button class="list__delete">Delete</button>
         </div>
         <div class="list__block">
-            <input type="checkbox" class="list__button" />
-            <div class="list__content">
-                Learn JavaScript
-            </div>
+            <label>
+                <input type="checkbox" class="list__button" />
+                <div class="list__content">
+                    Learn JavaScript
+                </div>
+            </label>
             <button class="list__delete">Delete</button>
         </div>
     </main>
