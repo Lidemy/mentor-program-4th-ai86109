@@ -1,0 +1,101 @@
+body {
+  margin: 0;
+  background: #f7f7f7;
+}
+
+.warning {
+  background: #ffc4c6;
+  color: #a20606;
+  padding: 10px;
+  text-align: center;
+}
+
+.error {
+  color: #a20606;
+}
+
+.board {
+  background: white;
+  max-width: 750px;
+  width: 100%;
+  margin: 15px auto;
+  box-shadow: 1px 1px 3px #e8e8e8;
+  border-radius: 5px;
+  padding: 12px 30px;
+}
+
+.board__btn {
+  background: white;
+  font-size: 15px;
+  padding: 10px 20px;
+  border: 1px solid #c2dffb;
+  border-radius: 5px;
+  color: #583c63;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.board__nickname {
+  margin-bottom: 10px;
+}
+
+.board__nickname input {
+  border: 1px solid #c2dffb;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.board__form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #c2dffb;
+}
+
+.board__submit-btn {
+  background: white;
+  font-size: 15px;
+  width: 100px;
+  padding: 10px;
+  border: 1px solid #c2dffb;
+  border-radius: 5px;
+  color: #583c63;
+}
+
+.board__hr {
+  background: #e8e8e8;
+  height: 2px;
+  margin: 20px auto;
+  max-width: 95%;
+}
+
+.card {
+  display: flex;
+  margin: 20px 0;
+}
+
+.card__avatar {
+  background: #e4f0fb;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+}
+
+.card__body {
+  margin-left: 15px;
+}
+
+.card__author {
+  color: #5c9edc;
+  font-weight: bold;
+}
+
+.card__time {
+  color: #a0a0a0;
+}
+
+.card__content {
+  margin: 8px 0;
+  white-space: pre-line;
+  word-break: break-word;
+}
