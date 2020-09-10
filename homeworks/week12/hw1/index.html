@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <title>Guestbook</title>
+    <style>
+      .card {
+        margin-top: 10px;
+      }
+
+      .hide {
+        display: none;
+      }
+    </style>
+    <script>
+      let id = 0
+
+      function escape(toOutput){
+        return toOutput.replace(/\&/g, '&amp;')
+        .replace(/\</g, '&lt;')
+        .replace(/\>/g, '&gt;')
+        .replace(/\"/g, '&quot;')
+        .replace(/\'/g, '&#x27')
+        .replace(/\//g, '&#x2F');
+      }
+      function appendCommentToDOM(container, comment, isPrepnd) {
+        const html = `
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">${escape(comment.nickname)}</h5>
+                <p class="card-text">${escape(comment.content)}</p>
+              </div>
+            </div>
+            `
+        if(isPrepnd) {
+          container.prepend(html)
+        } else {
+          container.append(html)
+        }
+      }
+
+      function hideLoadMore() {
+        $.ajax({
+          url: `./api_loadmore.php?site_key=derek&id=${id}`
+        }).done(function(data) {
+          if(!data.ok) {
+            alert(data.message)
+            return
+          }
+          if(data.hide) {
+            $('.load-more').addClass('hide')
+          } else {
+            $('.load-more').removeClass('hide')  
+          }
+        })
+      }
+
+      $(document).ready(() => {
+        const commentDOM = $('.comments')
+        hideLoadMore();
+        $.ajax({
+          url: "./api_comments.php?site_key=derek&id=0"
+        }).done(function(data) {
+          if(!data.ok) {
+            alert(data.message)
+            return
+          }
+
+          const comments = data.discussion
+          for(let comment of comments) {
+            appendCommentToDOM(commentDOM, comment, false)
+            id = comment.id
+          }
+        })
+
+        $('.add-comment-form').submit(e => {
+          e.preventDefault();
+          const newCommentData = {
+            site_key: 'derek',
+            nickname: $('input[name=nickname]').val(),
+            content: $('textarea[name=content]').val()  
+          }
+          $.ajax({
+            type: 'POST',
+            url: './api_add_comments.php',
+            data: newCommentData
+          }).done(function(data) {
+            if(!data.ok) {
+              alert(data.message)
+              return
+            }
+            appendCommentToDOM(commentDOM, newCommentData, true)
+            $('input[name=nickname]').val('')
+            $('textarea[name=content]').val('')
+          })
+        })
+
+        $('.load-more').click((e) => {
+          $.ajax({
+            url: `./api_comments.php?site_key=derek&id=${id}`
+          }).done(function(data) {
+            if(!data.ok) {
+              alert(data.message)
+              return
+            }
+            let comments = data.discussion
+            for(let comment of comments) {
+              appendCommentToDOM(commentDOM, comment, false)
+              id = comment.id
+            }
+            hideLoadMore();
+          })
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <div class="container">
+      <form class="add-comment-form">
+        <div class="form-group">
+          <label for="form-nickname">暱稱</label>
+          <input name="nickname" type="text" class="form-control" id="form-nickname">
+        </div>
+        <div class="form-group">
+          <label for="form-content">請輸入留言</label>
+          <textarea name="content" class="form-control" id="form-content" rows="4"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+      <div class="comments"></div>
+      <button type="button" class="load-more btn btn-primary mt-4">載入更多</button>
+    </div>
+  </body>
+</html>
