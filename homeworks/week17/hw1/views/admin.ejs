@@ -1,0 +1,48 @@
+<%
+function restructDate(date){
+  const dateArr = date.toString().split(' ')
+  return dateArr[3] + ' ' + dateArr[1] + ' ' + dateArr[2] + ' ' + dateArr[4]
+}
+%>
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('./template/header') %>
+</head>
+
+<body>
+  <%- include('./template/nav_admin') %>
+  <section class="banner">
+    <div class="banner__wrapper">
+      <h1>存放技術之地</h1>
+      <div>Welcome to my blog</div>
+    </div>
+  </section>
+  <div class="container-wrapper">
+    <div class="container">
+      <div class="admin-posts">
+        <% articles.forEach((article) => { %>
+        <div class="admin-post">
+          <div class="admin-post__title">
+              <%= article.title %>
+          </div>
+          <div class="admin-post__info">
+            <div class="admin-post__created-at">
+              <%= restructDate(article.createdAt) %>
+            </div>
+            <a class="admin-post__btn" href="/edit_article/<%= article.id %>">
+              編輯
+            </a>
+            <a class="admin-post__btn" href="/delete_article/<%= article.id %>">
+              刪除
+            </a>
+          </div>
+        </div>
+      <% }) %>
+      </div>
+    </div>
+  </div>
+  <footer>Copyright © 2020 Who's Blog All Rights Reserved.</footer>
+</body>
+</html>
