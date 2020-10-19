@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('./template/header') %>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+  <%- include('./template/nav_admin') %>
+  <main>
+    <div class="login-wrapper">
+      <h2>編輯菜單</h2>
+      <% if(errorMessage && errorMessage.length > 0){ %>
+        <div class="alert">
+          <%= errorMessage %>
+        </div>
+      <% } %>
+      <form action="/update_menu/<%= menu.id %>" method="POST">
+        <div class="form-group">
+          <label>菜名</label>
+          <input type="text" class="form-control" name="name" value="<%= menu.name %>" />
+        </div>
+        <div class="form-group">
+          <label>價格</label>
+          <input type="text" class="form-control" name="price" value="<%= menu.price %>" />
+        </div>
+        <div class="form-group">
+          <label>料理圖片</label>
+          <input type="text" class="form-control" name="image" value="<%= menu.image %>" />
+        </div>
+        <button type="submit" class="btn btn-primary">送出</button>
+      </form>
+    </div>
+  </main>
+  <%- include('./template/footer') %>
+</body>
+</html>

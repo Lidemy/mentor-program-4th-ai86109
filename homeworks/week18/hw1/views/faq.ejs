@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('./template/header') %>
+</head>
+
+<body>
+  <%- include('./template/nav_index') %>
+  <div class="wrapper__content">
+    <section class="description">
+        <h2 class="description__title">FAQ - 常見問題</h2>
+    </section>
+    <% faqs.forEach((faq) => { %>
+    <div class="faq__block">
+        <div class="faq__question">
+          <span>Q:</span>
+          <%= faq.title %>
+        </div>
+        <div class="faq__answer">
+          <%= faq.content %>
+        </div>
+    </div>
+    <% }) %>
+  </div>
+  <%- include('./template/footer') %>
+  <script>
+    document.querySelector('.wrapper__content').addEventListener('click', function (e) {
+        if (e.target.classList.contains('faq__question')) {
+          let answers = e.target.parentNode.querySelector('.faq__answer')
+          answers.classList.toggle('open')
+        }
+    })
+  </script>
+</body>
+</html>

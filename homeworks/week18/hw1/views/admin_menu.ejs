@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('./template/header') %>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+  <%- include('./template/nav_admin') %>
+  <main>
+    <section>
+      <div class="add-btn"><a class="btn btn-info" href="/add_menu">新增菜單</a></div>
+      <div class="table">
+        <table>
+          <tr>
+            <th>菜名</th>
+            <th>價格</th>
+            <th>料理圖片</th>
+            <th></th>
+          </tr>
+          <% menus.forEach((menu) => { %>
+          <tr>
+            <td><%= menu.name %></td>
+            <td><%= menu.price %></td>
+            <td><%= menu.image %></td>
+            <td>
+              <a href="/update_menu/<%= menu.id %>">編輯</a>
+              <a href="/delete_menu/<%= menu.id %>">刪除</a>
+            </td>
+          </tr>
+          <% }) %>
+        </table>
+      </div>
+    </section>
+  </main>
+  <%- include('./template/footer') %>
+</body>
+</html>

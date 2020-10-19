@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('./template/header') %>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+  <%- include('./template/nav_admin') %>
+  <div class="wrapper">
+    <div class="admin">
+      <div class="buttons">
+        <a href="/admin_lottery"><div class="button btn-admin">抽獎管理</div></a>
+        <a href="/admin_menu"><div class="button btn-admin">菜單管理</div></a>
+        <a href="/admin_faq"><div class="button btn-admin">問題管理</div></a>
+    </div>
+    </div>
+  </div>
+  <%- include('./template/footer') %>
+</body>
+</html>
