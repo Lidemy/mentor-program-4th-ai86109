@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('./template/header') %>
+</head>
+
+<body>
+  <%- include('./template/nav_admin') %>
+  <section class="banner">
+    <div class="banner__wrapper">
+      <h1>存放技術之地</h1>
+      <div>Welcome to my blog</div>
+    </div>
+  </section>
+  <div class="container-wrapper">
+    <div class="container">
+      <div class="edit-post">
+        <form action="/edit_article/<%= article.id %>" method="POST">
+          <div class="edit-post__title">
+            發表文章：
+          </div>
+          <div class="edit-post__input-wrapper">
+            <input name="title" class="edit-post__input" value="<%= article.title %>" />
+          </div>
+          <div class="edit-post__input-wrapper">
+            <textarea name="content" rows="20" class="edit-post__content">
+            <%= article.content %>
+            </textarea>
+          </div>
+          <div class="edit-post__btn-wrapper">
+            <input class="edit-post__btn" type="submit" value="送出"/>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <footer>Copyright © 2020 Who's Blog All Rights Reserved.</footer>
+  <script>
+    CKEDITOR.replace('content');
+  </script>
+</body>
+</html>

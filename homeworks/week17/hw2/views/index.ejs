@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('./template/header') %>
+</head>
+
+<body>
+  <%- include('./template/nav_index') %>
+  <main>
+    <div class="lottery__bg">
+      <div class="lottery__block">
+        <div class="lottery__title">
+            <h1>2020 夏日輕盈特賞！ 抽獎活動辦法</h1>
+        </div>
+        <div class="lottery__content">
+          <div class="lottery__content-title">活動期間：</div>
+          <span>2020/06/01~2021/07/01</span>
+        </div>
+        <div class="lottery__content">
+            <div class="lottery__content-title">活動說明：</div>
+          <span>今天老闆佛心來著決定給大家發獎勵，有看有機會，沒看只能幫QQ！只要在店內消費滿1000000元即有機會獲得 - 總價值超過100000的大獎</span>
+        </div>
+        <div class="lottery__content">
+          <div class="lottery__content-title">獎  品：</div>
+          <span>
+          <% prizes.forEach((prize) => { %>
+            ❤ <%= prize.prize %>：<%= prize.description %><br>
+          <% }) %>
+          </span>
+        </div>
+        <div class="lottery__btn"><button>我要抽獎</button></div>
+      </div>
+    </div>
+    <div class="prize__text"></div>
+    <div class="prize__btn"><button>我要抽獎</button></div>
+  </main>
+  <%- include('./template/footer') %>
+  <script src="/public/index.js"></script>
+</body>
+</html>
