@@ -29,6 +29,7 @@
 
 ---
 ## 開始優化
+[網站位置](https://ai86109.github.io/lazy-hackathon/)
 
 ### 將檔案中的註解刪除
 * HTML
