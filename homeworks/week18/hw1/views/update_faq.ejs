@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+  <%- include('./template/header') %>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+
+<body>
+  <%- include('./template/nav_admin') %>
+  <main>
+    <div class="login-wrapper">
+      <h2>編輯問題</h2>
+      <% if(errorMessage && errorMessage.length > 0){ %>
+        <div class="alert">
+          <%= errorMessage %>
+        </div>
+      <% } %>
+      <form action="/update_faq/<%= faq.id %>" method="POST">
+        <div class="form-group">
+          <label>標題</label>
+          <input type="text" class="form-control" name="title" value="<%= faq.title %>" />
+        </div>
+        <div class="form-group">
+          <label>內容</label>
+          <textarea rows="10" class="form-control" name="content" ><%= faq.content %></textarea>
+        </div>
+        <div class="form-group">
+          <label>順序</label>
+          <input type="text" class="form-control" name="order" value="<%= faq.order %>" />
+        </div>
+        <button type="submit" class="btn btn-primary">送出</button>
+      </form>
+    </div>
+  </main>
+  <%- include('./template/footer') %>
+</body>
+</html>
