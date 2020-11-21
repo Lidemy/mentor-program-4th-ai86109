@@ -15,7 +15,7 @@ const AddTodoInput = styled.input`
 `;
 
 const SubmitButton = styled.button`
-  padding: 5px 8px;
+  padding: 5px 7px;
 `;
 
 export default function AddTodoForm({value, handleFormSubmit, handleInputChange}) {
