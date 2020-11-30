@@ -53,7 +53,7 @@ export default function HomePage() {
   useEffect(() => {
     getPosts().then((posts) => setPosts(posts))
     setIsLoading(false)
-  }, [posts])
+  }, [])
   return (
     <Root>
       {isLoading && <Loading>Loading...</Loading>}
