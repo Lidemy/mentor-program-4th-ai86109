@@ -28,9 +28,9 @@ const PostDate = styled.div`
   color: rgba(0, 0, 0, 0.2);
 `
 
-const PostEdit = styled.button``
+const PostEditButton = styled.button``
 
-const PostDelete = styled.button``
+const PostDeleteButton = styled.button``
 
 const Loading = styled.div`
   display: flex;
@@ -53,13 +53,13 @@ function Post({post, user, dispatch}) {
         {user && (user.id === post.userId && 
           <>
             <Link to={`/edit-post/${post.id}`} >
-              <PostEdit>編輯</PostEdit>
+              <PostEditButton>編輯</PostEditButton>
             </Link>
-            <PostDelete onClick={() => {
+            <PostDeleteButton onClick={() => {
               dispatch(deletePost(post.id))
             }}>
               刪除
-            </PostDelete>
+            </PostDeleteButton>
           </>
         )}
         <PostDate>{new Date(post.createdAt).toLocaleString()}</PostDate>

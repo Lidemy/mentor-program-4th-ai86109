@@ -36,9 +36,9 @@ const PostDate = styled.div`
   color: rgba(0, 0, 0, 0.2);
 `
 
-const PostEdit = styled.button``
+const PostEditButton = styled.button``
 
-const PostDelete = styled.button``
+const PostDeleteButton = styled.button``
 
 const PostBody = styled.div``
 
@@ -64,15 +64,15 @@ function Post({post, user, dispatch, history}) {
           {user && (user.id === post.userId && 
             <>
               <Link to={`/edit-post/${post.id}`} >
-                <PostEdit>編輯</PostEdit>
+                <PostEditButton>編輯</PostEditButton>
               </Link>
-              <PostDelete onClick={() => {
+              <PostDeleteButton onClick={() => {
                 dispatch(deletePost(post.id)).then(() => {
                   history.push("/")
                 })
               }}>
                 刪除
-              </PostDelete>
+              </PostDeleteButton>
             </>
           )}
           <PostDate>{new Date(post.createdAt).toLocaleString()}</PostDate>
